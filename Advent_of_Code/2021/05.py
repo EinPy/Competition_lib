@@ -152,5 +152,4 @@ def part2():
 	print(bottom)
 
 part2()
-# 16977 is too high
-# 15446 is too low
+
