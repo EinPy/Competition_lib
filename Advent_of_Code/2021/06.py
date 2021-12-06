@@ -51,12 +51,37 @@ def part2(fish):
 		fishes[6] = seven + zero
 		fishes[7] = eight
 		fishes[8] = zero	
-		print(fishes)
+
 
 	tot = 0
 	for i in range(9):
 		tot += fishes[i]	
 	print(tot)
+
+
 part2(fish)
 
-#371379
+def part2_better(fish):
+	fishes = {}
+	for i in range(9):
+		fishes[i] = 0
+
+	for val in fish:
+		fishes[val] += 1
+
+	for days in range(256):
+		cop = fishes.copy()
+
+		for i in range(9):
+			if i == 6:
+				fishes[i] = cop[7] + cop[0]
+			elif i == 8:
+				fishes[i] = cop[0]
+			else:
+				fishes[i] = cop[i+1]
+
+	tot = 0
+	for i in range(9):
+		tot += fishes[i]	
+	print(tot)
+part2_better(fish)
