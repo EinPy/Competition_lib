@@ -6,16 +6,17 @@ def setupInputOutputSublime():
     import os
 
     if os.name == 'nt':
-        sys.stdout = open("D:\\Temp\\output.txt", mode = 'w')
-        sys.stdin = open("D:\\Temp\\input.txt", mode = 'r')
-setupInputOutputSublime()
+        sys.stdout = open("C:\\Temp\\output.txt", mode = 'w')
+        sys.stdin = open("C:\\Temp\\input.txt", mode = 'r')
+#setupInputOutputSublime()
 from math import sqrt
 
 itr = (line for line in sys.stdin.read().strip().split('\n'))
 input = lambda: next(itr)
 
-
+#solution to https://codeforces.com/problemset/problem/1527/B1
 def solve(s):
+    #modeling approach
     s = list(s)
     Al = 0
     Bob = 0
@@ -75,11 +76,24 @@ def solve(s):
         print("DRAW")
 
 def solve2(s):
-    0s = s.count('0')
+    #mathematical approach
+    n = s.count('0')
+    if n == 0:
+        print("DRAW")
+    elif n == 1:
+        print("BOB")
+    elif n%2 == 0:
+        print("BOB")
+    else:
+        print("ALICE")
 
 
 T = int(input())
 for i in range(T):
     n = int(input())
+<<<<<<< HEAD:30DaysOfCodeforces/03_Palindrome_Game.py
     s = list(map(int,input().split()))
+=======
+    s = input()
+>>>>>>> 152a69b571cf69734b9210a897099d72c333d21e:30DaysOfCodeforces/04_Palindrome_Game.py
     solve2(s)
