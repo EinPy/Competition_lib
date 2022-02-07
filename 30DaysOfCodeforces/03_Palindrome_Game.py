@@ -82,4 +82,4 @@ T = int(input())
 for i in range(T):
     n = int(input())
     s = list(map(int,input().split()))
-    solve(s)
+    solve2(s)
