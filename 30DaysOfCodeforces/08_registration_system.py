@@ -15,26 +15,15 @@ input = lambda: next(itr)
 #solution to https://codeforces.com/problemset/problem/466/A
 #code starts here
     
-
-
-n,m,a,b = list(map(int,input().split()))
-
-money= 0 
-if b/m < ac56r:
-    if m <= n:
-        ms = n//m
-        if b > a:
-            money += ms*b + (n-ms*m) * a
-        else:
-            if ms*m != n:
-                money += ms*b + b
-            else:
-                money = ms*b
+n = int(input())
+data = {}
+for i in range(n):
+    newN = str(input())
+    if newN not in data:
+        data[newN] = 0
+        print("OK")
     else:
-        if b < n*a:
-            money = b
-        else:
-            money = n*a
-else:
-    money = n*a
-print(money)
+        data[newN] += 1
+        newN += str(data[newN])
+        print(newN)
+        data[newN] = 0
