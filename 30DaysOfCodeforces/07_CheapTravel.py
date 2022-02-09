@@ -12,7 +12,7 @@ from math import sqrt
 itr = (line for line in sys.stdin.read().strip().split('\n'))
 input = lambda: next(itr)
 
-#solution to https://codeforces.com/problemset/problem/466/A
+#solution to https://codeforces.com/problemset/problem/4/C
 #code starts here
     
 
