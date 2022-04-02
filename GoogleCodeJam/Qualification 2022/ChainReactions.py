@@ -11,10 +11,15 @@ def solve(n,graph,Ff):
     leafs = [True_ for _ in range(n)]
     for e in graph:
         leafs[graph[e]] = False
+    l = []
+    for i in range(leafs):
+        if leafs[i] == True:
+            l.append(i)
+            
 
 
     vis = [False for _ in range(len(graph))]
-    for i in range(n):
+    for i in l:
         if leafs[i]:
             totFf = max(bfs(graph,i,Ff, vis), totFf)
     print(totFf)
