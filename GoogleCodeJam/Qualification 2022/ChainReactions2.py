@@ -5,6 +5,10 @@ itr = (line for line in sys.stdin.read().strip().split('\n'))
 input = lambda: next(itr)
 #code
 
+
+#Sor of right idea, but not correct execution
+#needed to implement another base case, and find the value of all 
+#possible branches, and memoization
 def bfsRec(revG,Ff,S, best = 0):
     best = max(best, Ff[S])
     if revG[S] == []:
