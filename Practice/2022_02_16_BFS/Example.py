@@ -2,6 +2,7 @@ import sys
 itr = (line for line in sys.stdin.read().strip().split('\n'))
 input = lambda: next(itr)
 
+#Bfs to find distannce to all nodes in graph
 def bfs(Graph, S):
     q = [S]
     dists = {S:0}
