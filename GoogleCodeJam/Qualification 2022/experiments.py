@@ -1,4 +1,6 @@
 arr = [[1, 2], [3], [], []]
 Ff = [60, 20, 40, 50]
 
-print(Ff[arr[1]])
+test = 0
+print(test != False)
+print(0 == False)
