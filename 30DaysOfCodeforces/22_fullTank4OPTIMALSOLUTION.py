@@ -4,7 +4,7 @@ itr = (line for line in sys.stdin.read().strip().split('\n'))
 input = lambda: next(itr)
 
 #code
-
+#solution to https://open.kattis.com/problems/fulltank
 
 
 #standard template
