@@ -7,38 +7,19 @@ input = lambda: next(itr)
 
 
 
-
+#standard template
 def solve(n,m,p,graph,c,s,e):
 #    print(graph)
-    newG = [[] for _ in range(c*n)]
-    for node in range(n):
-        newN = []
-        for el in range(len(graph[node])):
-            to,cost,dist = graph[node][el]
-            newN.append((to*c,cost,dist))
-        for dup in range(c):
-            if dup != c-1:
-#                print(node)
-                withEnd = newN + [(node*c + dup + 1, p[node],-1)]
-#                print(node*c+dup)
-                newG[node*c+dup] = withEnd
-            else:
-                newG[node*c+dup] = newN
+    print(djikstra(s,e,graph,c, n, p))
 
-#    print(newG)
-    print(djikstra(s*c,e*c,newG,c, n))
-
-            
 
 INF = 10**9
 #djikstra ashortest path in weighted graph. 
 from heapq import heappush, heappop
-# S: Start node
 # G: [[(to_node, weight)]], for instance [[(1,3), (0,3), ...], [...], ...]
-#return shortes dists to all
-#return shortest path
-def djikstra(S, F, G, c, n):
-    dists = [[INF for _ in  range(c*n)] for _ in range(c+1)]
+#input is start, finish, graph, fuelTankSize, amount of node, price list
+def djikstra(S, F, G, c, n, p):
+    dists = [[INF for _ in range(n)] for _ in range(c+1)]
 #    print(dists)
     heap = []
     #tot cost, node, curTank
@@ -48,16 +29,25 @@ def djikstra(S, F, G, c, n):
     while heap:
         cost, node, tank = heappop(heap)
         if node == F: return cost
-        for vertex, price, dist in G[node]:
-            alt = cost + price
+        for vertex, dist in G[node]:
             fuel = tank - dist
             if fuel >= 0 and fuel <= c:
-                if alt < dists[fuel][vertex]:
-                    dists[fuel][vertex] = alt
-                    heappush(heap, (alt, vertex,fuel))
-                
+                if cost < dists[fuel][vertex]:
+                    dists[fuel][vertex] = cost
+                    heappush(heap,(cost, vertex, fuel))
+
+        if tank < c:
+            fuel = tank + 1
+            cost += p[node]
+            if cost < dists[fuel][node]:
+                dists[fuel][node] = cost
+                heappush(heap,(cost, node, fuel))
+
     if dists[0][F] == INF: return "impossible"
     return dists[0][F]
+
+
+
 
 
 
@@ -67,8 +57,8 @@ def run():
     graph = [[] for _ in range(n)]
     for edge in range(m):
         u, v, d = list(map(int,input().split()))
-        graph[u].append((v,0, d))
-        graph[v].append((u,0, d))
+        graph[u].append((v, d))
+        graph[v].append((u, d))
         
         
     q = int(input())

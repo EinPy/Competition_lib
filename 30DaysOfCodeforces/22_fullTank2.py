@@ -38,12 +38,12 @@ from heapq import heappush, heappop
 #return shortes dists to all
 #return shortest path
 def djikstra(S, F, G, c, n):
-    dists = [[INF for _ in  range(c*n)] for _ in range(c+1)]
+    dists = {}
 #    print(dists)
     heap = []
     #tot cost, node, curTank
     heappush(heap, (0,S,0))
-    dists[0][S] = 0
+    dists[(0,S)] = 0
     
     while heap:
         cost, node, tank = heappop(heap)
@@ -52,12 +52,15 @@ def djikstra(S, F, G, c, n):
             alt = cost + price
             fuel = tank - dist
             if fuel >= 0 and fuel <= c:
-                if alt < dists[fuel][vertex]:
-                    dists[fuel][vertex] = alt
+                if (fuel, vertex) not in dists:
+                    dists[(fuel, vertex)] = alt
+                    heappush(heap, (alt, vertex,fuel))
+                elif alt < dists[(fuel, vertex)]:
+                    dists[(fuel, vertex)] = alt
                     heappush(heap, (alt, vertex,fuel))
                 
-    if dists[0][F] == INF: return "impossible"
-    return dists[0][F]
+    if (0,F) not in dists: return "impossible"
+    return dists[(0,F)]
 
 
 
