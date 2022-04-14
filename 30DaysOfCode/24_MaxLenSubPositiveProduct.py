@@ -1,3 +1,5 @@
+#solution to: https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/submissions/
+
 def getMaxLen(nums):
     n = len(nums)
 

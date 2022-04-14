@@ -16,7 +16,8 @@ def solve(n, l, out, targ):
                 newOut[i][pos] == '1'
             else:
                 newOut[i][pos] == '0'
-                
+                    
+        ans = 
     
 def check(out, targ):
     for i in range(len(out)):
