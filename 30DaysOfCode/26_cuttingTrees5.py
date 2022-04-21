@@ -15,7 +15,7 @@ def solve(trees):
     if n < 3:
         return n
     
-    mem = [[-1 for _ in range(n)] for _ in range(2)]
+    mem = {}
     
     def dfs(prev,i):
         
