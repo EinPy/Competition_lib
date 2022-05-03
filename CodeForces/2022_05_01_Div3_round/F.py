@@ -12,8 +12,15 @@ def nl(): return [int(_) for _ in INP().split()]
 
 def solve(arr):
     pass
-t = ni()
-for case in range(t):
-    n = ni()
+
+
+
+n, m, q = nl()
+g = []
+for row in range(n):
+    r = INP()
+    g.append(r.split())
+print(g)
+for case in range(q):
+    r, c = nl()
     arr = nl()
-    solve(arr)
