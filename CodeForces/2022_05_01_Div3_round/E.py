@@ -8,39 +8,36 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-
+import math
 
 def solve(n,arr):
     best = 2e6
     cur = 2e6
 
-    s1, s2 = 2e6, 2e6
+
     for i in range(n-1):
         f = max(arr[i], arr[i+1])
         s = min(arr[i], arr[i+1])
-        if s < s1:
-            s2 = s1
-            s1 = s
-        elif s < s2:
-            s2 = s
-        #print(s, f)
-        cur = ((2 * s) // 3) + (f - s) // 2
-        #print(cur)
-        if (f-s) % 2 == 1:
-            cur += 1
-        #print(cur)
-        best = min(best, cur)
+
+        #adjacent
+        if f > 2 * s:
+            cur = math.ceil(f/2)
+        else:
+            cur = math.ceil((s + f)/3)
+        best = min(best, int(cur))
+    
+        best = min(best, int(cur))
+        if i != 0:
+            cur = 0
+            side1 = min(arr[i-1],arr[i+1])
+            side2 = max(arr[i-1],arr[i+1])
+            cur += side1 + math.ceil((side2 - side1)/2)
+            best = min(cur, best)
+
+    arr.sort()
+    a = (arr[0] + 1) //2 + (arr[1] + 1) // 2
         
-    if s1 %2 == 0:
-        s1 = s1 // 2
-    else:
-        s1 = (s1 // 2) + 1
-    if s2 % 2 == 0:
-        s2 = s2 // 2
-    else:
-        s2 = (s2 //2) + 1
-        
-    return min(s1 + s2, best)
+    return min(int(a), best)
         
         
     
