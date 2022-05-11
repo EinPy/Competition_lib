@@ -8,7 +8,7 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-
+import math
 
 def solve(n, arr):
     mi, ma = 2e10, 0
@@ -25,10 +25,16 @@ def solve(n, arr):
         if arr[i] == ma:
             maA += 1
     
-    if 
-    ways = maA * miA / 2
-    print(ma - mi)
-    print(ways)
+    
+    print(ma - mi, end = " ")
+    if miA == 1:
+        print(maA)
+    elif maA == 1:
+        print(miA)
+    elif mi == ma:
+        print(math.comb(miA, 2))
+    else:
+        print(int(maA * miA))
 
 
 
