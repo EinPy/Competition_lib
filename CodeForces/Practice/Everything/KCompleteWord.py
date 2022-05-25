@@ -9,21 +9,23 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-def solve(n, k, s):
+def solve(n,k,s):
     alph = ascii_lowercase
-    cnt = [[0 for _ in range(k)] for _ in range(len(alph))]
+    cnt = [[0 for _ in range(26)] for j in range((k+1)//2)]
+    for i in range(n):
+        cnt[min(i%k, k - i% k - 1)][alph.index(s[i])] += 1
+
+    ans = 0
+    for i in range(k // 2):
+        ans += 2 * n // k - max(cnt[i])
+    if k % 2 == 1:
+        ans += n // k - max(cnt[k//2])
     
-    for i in range(0, k * (n // k), k):
-        for j in range(i, i + k):
-            cnt[alph.index(s[j])][j%k] += 1
-            print(s[j], j%k, alph.index(s[j]))
-            
-    for line in cnt: print(line)
-        
+    print(ans)
 
 
 t = ni()
 for case in range(t):
-    n, k = nl()
+    n ,k = nl()
     s = INP()
-    solve(n, k, s)
+    solve(n,k,s)
