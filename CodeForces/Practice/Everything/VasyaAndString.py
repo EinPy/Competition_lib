@@ -10,13 +10,24 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 def solve(n,k,a):
+    if n == 1:
+        print(1)
+        return
     alph = ascii_lowercase
-    cnt = [0] * len(alph)
+    cnt = [0] * (len(alph) + 1)
     changes = 0
-    l, r = 0
+    l, r = 0, 0
+    d = 0
     cnt[alph.index(a[l])] += 1
-    while r < n:
-        d = r - l + 1
+    while r < n-1:
+        r += 1
+        cnt[alph.index(a[r])] += 1
+        if sum(cnt) - max(cnt) > k:
+            cnt[alph.index(a[l])] -= 1
+            l += 1
+        d = max(d, r - l + 1)
+    print(d)
+        
 
 
         
