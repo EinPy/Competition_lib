@@ -33,6 +33,8 @@ for case in range(t):
         robots[i][1] = Y
         robots[i][2] = card.index(C)
         grid[X][Y] = "*"
+        
     for l in grid:print(l)
     print(robots)
     
+    #it's too trivial to complete the task.
