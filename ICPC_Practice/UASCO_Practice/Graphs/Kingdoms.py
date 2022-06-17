@@ -35,27 +35,22 @@ for i in range(1,n):
         dfs1(i)
 
 
-def dfs2(i):
+def dfs2(i, k):
     vis[i] = True
+    kingDoms[i] = k
     for u in adjR[i]:
         if not vis[u]:
-            dfs2(u)
+            dfs2(u, k)
             
 vis = [False] * n
 StrongComps = 0
-out = []
+kingDoms = [0 for _ in range(n)]
 for i in s[::-1]:
     if not vis[i]:
         StrongComps += 1
-        out.append(i)
-        dfs2(i)
-        
-        
-if StrongComps == 1:
-    print("YES")
-else:
-    print("NO")
-    print(out[1], out[0])
-        
+        dfs2(i,StrongComps)
+print(StrongComps)
+out = kingDoms[1:]
+print(' '.join(map(str,out)))
         
 #Korsajus algorithm

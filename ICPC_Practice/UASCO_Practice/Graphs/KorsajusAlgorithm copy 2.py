@@ -51,11 +51,5 @@ for i in s[::-1]:
         dfs2(i)
         
         
-if StrongComps == 1:
-    print("YES")
-else:
-    print("NO")
-    print(out[1], out[0])
-        
         
 #Korsajus algorithm
