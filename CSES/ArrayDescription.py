@@ -35,20 +35,20 @@ else:
 for i in range(1, n):
     if a[i] == 0:
         for v in range(1,lim+1):
-            dp[v][i] += dp[v][i-1] % MOD
+            dp[v][i] += dp[v][i-1] 
             if v-1 >= 1:
-                dp[v][i] += dp[v-1][i-1] % MOD
+                dp[v][i] += dp[v-1][i-1] 
             if v+1 <= lim:
-                dp[v][i] += dp[v+1][i-1] % MOD
+                dp[v][i] += dp[v+1][i-1] 
                 
             dp[v][i] = dp[v][i] % MOD
     else:
         v = a[i]
-        dp[v][i] += dp[v][i-1] % MOD
+        dp[v][i] += dp[v][i-1] 
         if v-1 >= 1:
-            dp[v][i] += dp[v-1][i-1] % MOD
+            dp[v][i] += dp[v-1][i-1] 
         if v+1 <= lim:
-            dp[v][i] += dp[v+1][i-1] % MOD
+            dp[v][i] += dp[v+1][i-1]
             
         dp[v][i] = dp[v][i] % MOD
 # for l in dp:
