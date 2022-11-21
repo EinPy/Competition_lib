@@ -1,3 +1,15 @@
+import sys
+from collections import *
+from tkinter.tix import Tree
+sys.setrecursionlimit(10**5)
+itr = (line for line in sys.stdin.read().strip().split('\n'))
+INP = lambda: next(itr)
+def ni(): return int(INP())
+def nl(): return [int(_) for _ in INP().split()]
+
+
+#solution to https://codeforces.com/edu/course/2/lesson/4/2/practice/contest/273278/problem/A
+
 # Tested on: https://open.kattis.com/problems/supercomputer
 class SegmentTree:
     def __init__(self, arr, func=min):
@@ -67,7 +79,7 @@ class SegmentTree:
     def inc(self, pos, delta):
         assert 0 <= pos < self.sz
         self.__inc(1, pos, delta)
-     
+
     def __inc(self, i, pos, delta):
         l, r = self.L[i], self.R[i]
         if pos < l or r < pos: return
@@ -77,3 +89,15 @@ class SegmentTree:
         self.__inc(i*2, pos, delta)
         self.__inc(i*2 + 1, pos, delta)
         self._fix(i)
+
+def add(a, b):
+    return a+ b
+
+n, m = nl()
+a = nl()
+T = SegmentTree(a ,add)
+print(T.query(0,n-1))
+for _ in range(m):
+    i, v = nl()
+    T.assign(i,v)
+    print(T.query(0,n-1))

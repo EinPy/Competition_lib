@@ -8,11 +8,17 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-n, t = nl()
-a = nl()
+def solve(n,a):
+    pass
 
 
+t = ni()
 for case in range(t):
-    q = INP().split(" ")
-    if q[0] == "+":
-        
+    n, a, b = nl()
+    if a == n and b == n:
+        print("Yes")
+    else:
+        if a + b > n-2: 
+            print("No")
+        else:
+            print("Yes")

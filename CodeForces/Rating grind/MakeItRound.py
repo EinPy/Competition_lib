@@ -8,11 +8,14 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-n, t = nl()
-a = nl()
-
-
-for case in range(t):
-    q = INP().split(" ")
-    if q[0] == "+":
+def solve(n,m):
+    dig = list(map(int,list(str(n))))
+    print(n, dig)
         
+    pass
+
+
+t = ni()
+for case in range(t):
+    n,m = nl()
+    solve(n,m)

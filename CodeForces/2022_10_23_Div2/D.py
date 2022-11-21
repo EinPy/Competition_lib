@@ -8,11 +8,7 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 
-n, t = nl()
-a = nl()
-
-
-for case in range(t):
-    q = INP().split(" ")
-    if q[0] == "+":
-        
+n, x = nl()
+arr = nl()
+#all elements greater than x is divisible by x
+#sum of all elements lower than x must be a multiple of x
