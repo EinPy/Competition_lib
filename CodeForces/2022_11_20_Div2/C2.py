@@ -20,6 +20,7 @@ def solve():
         for j in range(n):
             if g[i][j] == 1:
                 g[i].append(j)
+                
     print(sets)
     for i in range(n-1,-1,-1):
         for j in range(n-1,-1,-1):
