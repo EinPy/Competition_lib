@@ -9,68 +9,42 @@ def nl(): return [int(_) for _ in INP().split()]
 
 
 def solve(n,a):
-    p = []
     c = 0
-    for e in a:
-        c += e
-        p.append(e)
-    suff = []
-    c = 0
-    for i in range(n-1,-1,-1):
-        c += a[i]
-        suff.append(c)
-    suff.reverse()
-    #simply flip last 1 to a 0'
-    c = 0
-    inv = 0
-    last1 = 0
-    first0 = -1
+    o = 0
+    pref = []
+    #count first
     for i in range(n):
-        c += a[i]
-        if a[i] == 0:
-            inv += c
-            if first0 == -1:
-                first0 = i
+        if a[i] == 1:
+            o += 1
         else:
-            last1 = i
-    #two cases
-    a1 =a[:]
-    if first0 != -1:
-        a1[first0] = 1
-    else:
-        a1[0] = 1
-        
-    c = 0
-    inv2 = 0
-    last1 = 0
-    first0 = -1
+            c += o
+        pref.append(o)
+    #make first 0 to a 1 or make last 1 to a 0
+    first = False
+    c2 = 0
+    o = 0
+    #case first 0 to one
     for i in range(n):
-        c += a1[i]
-        if a1[i] == 0:
-            inv2 += c
-            if first0 == -1:
-                first0 = i
+        if a[i] == 1:
+            o += 1
         else:
-            last1 = i
+            if not first:
+                o += 1
+                first = True
+            else:
+                c2 += o
+    c3 = 0
+    o = 0
+    for i in range(n):
+        if a[i] == 1:
+            o += 1
+        else:
+            if not first:
+                o += 1
+                first = True
+            else:
+                c2 += o
             
-    a2 = a[:]
-    if last1 != 0:
-        a2[last1] = 0
-    
-    c = 0
-    inv3 = 0
-    last1 = 0
-    first0 = -1
-    for i in range(n):
-        c += a2[i]
-        if a2[i] == 0:
-            inv3 += c
-            if first0 == -1:
-                first0 = i
-        else:
-            last1 = i
-    
-    print(max(inv,inv2, inv3))
         
         
         
