@@ -11,3 +11,5 @@ def nl(): return [int(_) for _ in INP().split()]
 n, m, d = nl()
 mine = nl()
 opp = nl()
+
+
