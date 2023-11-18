@@ -51,13 +51,6 @@ class FenwickTree: # zero indexed calls!
     def query(self, lo, hi):
         return self.sum(hi) - self.sum(lo-1)
 
-a1 = [1, 2, 3]
-a2 = [3, 2, 1]
-a3 = [2, 1, 3]
-
-a4 = [1, 2, 3, 4, 5]
-a5 = [1, 3, 2, 4, 5]
-a6 =[1, 2, 3, 5, 4]
 
 
 def pp(T):
@@ -65,9 +58,7 @@ def pp(T):
         print(T.query(i,i), end = " ")
     print()
     
-def inversions(a,b, sz):
-    return 0
-db = True
+db = False
 def solve(a1, a2, a3,sz):
     arrs = [a1, a2, a3]
     #start permutations at 0
@@ -86,20 +77,41 @@ def solve(a1, a2, a3,sz):
     poss = [p1, p2, p3]
     for i in range(3):
         for j in range(sz):
-            print(i, j, arrs[i][j])
+            if db: print(i, j, arrs[i][j])
             poss[i][arrs[i][j]] = j
             
     if db: print(poss)
     if db: print(p1, p2, p3)
     
-    T = FenwickTree([0] *sz)
+    T12 = FenwickTree([0] *sz)
+    T13 = FenwickTree([0] * sz)
+    T23 = FenwickTree([0] * sz)
     #count inversions between 1 and two
+    inv = 0
+    #a1 and a2
     for num in a1:
         #fill in num in 2, check if it comes before some num in 2, in that case, it is not in same order
-        T.inc(p2[num], 1)
-        if p2[num] != sz- 1
+        T12.inc(p2[num], 1)
+        if p2[num] != sz- 1:
+            inv += T12.query(p2[num] + 1, sz-1)
+        T13.inc(p3[num], 1)
+        if p3[num] != sz-1:
+            inv += T13.query(p3[num] +1, sz-1)
+    #a2 and a3
+    for num in a2:
+        T23.inc(p3[num], 1)
+        if p3[num] != sz- 1:
+            inv += T23.query(p3[num]+1,sz-1)
 
-solve(a1, a2, a3, 3)
+    #a1 and a3
+    #inv is 2x the pairs that were ordered wrong
+    #total amount of pairs is n*(n-1) / 2
+    print(int(sz * (sz-1) / 2 - inv/2))
+
+n = ni()
+a1, a2, a3 = nl(), nl(), nl()
+
+solve(a1, a2, a3, n)
         
 
         
