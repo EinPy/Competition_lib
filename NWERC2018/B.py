@@ -16,10 +16,7 @@ def bfs(adj, s, vis):
         q2 = []
         for u in q:
             for v in adj[u]:
-                if not vis[v]:
-                    cnt += 1
-                    q2.append(v)
-                    vis[v] = True
+                ifgo_back = True
         q = q2
     return vis, cnt
                     
@@ -50,3 +47,8 @@ for time, node in T:
         maxT = max(maxT,time + t)
         t += 1
 print(maxT)
+
+#
+#
+#
+#LRDUL

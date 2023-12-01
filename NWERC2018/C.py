@@ -115,10 +115,6 @@ def solve(adj):
     for x, y in output_cords:
         print("{:.12f} {:.12f}".format(x, y))
             
-                
-            
-
-
 
 n = ni()
 adj = [[] for _ in range(n)]

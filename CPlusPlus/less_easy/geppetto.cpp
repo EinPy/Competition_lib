@@ -34,6 +34,7 @@ int solve(int x) {
     }
     //count number of permutations that can be formed with items x+1 to n
     int rest = solve(x + 1); 
+    
     bool ok = true;
     for (auto v : adj[x]){
         if(used[v]){
