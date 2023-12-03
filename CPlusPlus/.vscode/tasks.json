@@ -6,17 +6,21 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++11",
+                "-std=gnu++17",
                 "-O2",
                 "-Wall",
+                "-Wextra",
+                "-Wshadow",
+                "-D_GLIBCXX_ASSERTIONS",
+                "-DDEBUG",
+                "-ggdb3",
+                "-fmax-errors=2",
                 "${file}",
                 "-o",
                 "${fileBasenameNoExtension}.exe"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build",
+            "problemMatcher": []
         }
     ]
 }

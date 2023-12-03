@@ -10,8 +10,13 @@ void solve() {
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    string num, in, to;
-    cin >> num >> in >> to;
-    //
-    
+    int a;
+    cin >> a;
+    string out = "";
+    for (int i=0;i<a;i++){
+        string add;
+        cin >> add;
+        out += add[0];
+    }
+    cout << out;
 }
