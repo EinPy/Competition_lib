@@ -1,31 +1,10 @@
 #include <bits/stdc++.h>
+#define all(x) begin(x),end(x)
+
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
 using ull = unsigned long long;
-
-
-//super slow naive prime test
-bool isprime(ll n){
-    if (n < 2){
-        return false;
-    }
-    if (n % 2 == 0){
-        if (n == 2){
-            return true;
-        }
-        return false;
-    }
-    ll mx = min(ceil(sqrt(n)) + 2, N);
-    for (ll i = 0; i < mx; i += 2){
-        if (n % i == 0){
-            return false;
-        }
-    }
-    return true;
-
-}
-
 
 //fast modulo operations
 ull modmul(ull a, ull b, ull M) {
@@ -76,4 +55,27 @@ vector<ull> factor(ull n) {
 	auto l = factor(x), r = factor(n / x);
 	l.insert(l.end(), all(r));
 	return l;
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    while (true){
+        ull n;
+        cin >> n;
+        if (n == 4){
+            return 0;
+        }
+        int cnt  = 1;
+        while (!isPrime(n)){
+            cnt++;
+            vector<ull> f = factor(n);
+            n = 0;
+            for (auto x :f){
+                n += x;
+            }
+        }
+        cout << n << " " << cnt << endl;
+
+    }
 }
